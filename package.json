@@ -1,0 +1,17 @@
+{
+  "name": "pouchdbdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "pouchdb": "^6.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
+}
