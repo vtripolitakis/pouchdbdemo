@@ -1,5 +1,8 @@
 var PouchDB = require("pouchdb")
+PouchDB.plugin(require('pouchdb-find'))
+
 var db = new PouchDB("koko")
+console.log(db)
 
 
 function showDocs(){
@@ -9,11 +12,24 @@ function showDocs(){
     }).then(function (result) {
         let data = ""
         result.rows.map((obj)=>{
-            data+=JSON.stringify(obj)+"<br/>"
+            data+=JSON.stringify(obj.doc)+"<br/>"
         })
         document.getElementById("results").innerHTML = data
     }).catch(function (err) {
         document.getElementById("results").innerHTML = err
+    })
+}
+
+function findOlder(){
+	
+    db.find({selector: {age:{$gte: Number(document.getElementById("age").value)}}}).then((result)=>{
+    	let data = ""
+    	result.docs.map((obj)=>{
+            data+=JSON.stringify(obj)+"<br/>"
+        })
+        document.getElementById("results").innerHTML = data
+    }).catch((err)=>{
+    	document.getElementById("results").innerHTML = err
     })
 }
 
@@ -26,7 +42,7 @@ function addUser(){
     db.put({
         _id: slug.value,
         fullname : fullname.value,
-        age : age.value
+        age : Number(age.value)
     }).then(() => {
         execution_result.innerHTML = "<strong style='color:green'>Inserted successfully</strong>"
         slug.value = ""
@@ -39,6 +55,7 @@ function addUser(){
 
 document.getElementById("showBtn").addEventListener("click",showDocs)
 document.getElementById("addBtn").addEventListener("click",addUser)
+document.getElementById("findBtn").addEventListener("click",findOlder)
 
 
 

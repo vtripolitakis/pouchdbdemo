@@ -13,7 +13,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "pouchdb": "^6.1.2"
+    "pouchdb": "^6.1.2",
+    "pouchdb-find": "^0.10.5"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
