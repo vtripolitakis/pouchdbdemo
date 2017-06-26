@@ -11,6 +11,45 @@
   <br/>
   <div id="execution_result"></div>
   <div id="results"></div>
+  <script src="../src/armonia.js"></script>
   <script src="../dist/bundle.js"></script>
+
+  <script>
+    let out = []
+    let tmp_data = {}
+
+
+    for (article_id in data_json.articles){
+      tmp_data={}
+      let article = data_json.articles[article_id]
+      for (var_id in article.configs.variants){
+        for (conf_id in article.configs.variants[var_id].config){
+          for (lamp_id in article.configs.variants[var_id].config[conf_id].lamp){
+            tmp_data={}
+            tmp_data['article_id']=article_id
+            tmp_data['article_slug']=article.id
+            tmp_data['var_id'] = var_id
+            tmp_data['conf_id'] = conf_id
+            tmp_data['lamp_id'] = lamp_id
+            tmp_data['mounting_type'] = article['mounting_type']
+            tmp_data['mounting_place'] = article['mounting_place']
+            tmp_data['application'] = article['application']
+            tmp_data['applications_major_groups'] = article['applications_major_groups']
+            tmp_data['applications_fields_of_activity'] = article['applications_fields_of_activity']
+            tmp_data['controls'] = article['controls']
+            tmp_data['test_mark'] = article['test_mark']
+            tmp_data['protection_class'] = article['protection_class']
+            tmp_data['protection_degree'] = article['protection_degree']
+            tmp_data['lamp_type'] = article.equipments[article.configs.variants[var_id].config[conf_id].lamp[lamp_id].equ_id].lamp_type
+            tmp_data['lamp_shape'] = article.equipments[article.configs.variants[var_id].config[conf_id].lamp[lamp_id].equ_id].lamps[lamp_id].lamp_shape
+            tmp_data['beam_angle'] = article.equipments[article.configs.variants[var_id].config[conf_id].lamp[lamp_id].equ_id].lamps[lamp_id].beam_angle
+            tmp_data['socket'] = article.equipments[article.configs.variants[var_id].config[conf_id].lamp[lamp_id].equ_id].lamps[lamp_id].socket
+            tmp_data['system_light_flux'] = article.configs.variants[var_id].config[conf_id].lamp[lamp_id].system_light_flux
+            out.push(tmp_data)
+          }
+        }
+      }  
+    }
+  </script>
 </body>
 </html>
