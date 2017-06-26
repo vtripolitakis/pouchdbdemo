@@ -1,6 +1,6 @@
 {
   "name": "pouchdbdemo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pouchdb Demo",
   "main": "index.js",
   "scripts": {
@@ -13,8 +13,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "pouchdb": "^6.1.2",
-    "pouchdb-find": "^0.10.5"
+    "pouchdb": "^6.2",
+    "pouchdb-find": "^6.2"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

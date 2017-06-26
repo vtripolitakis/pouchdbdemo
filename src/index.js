@@ -57,5 +57,7 @@ document.getElementById("showBtn").addEventListener("click",showDocs)
 document.getElementById("addBtn").addEventListener("click",addUser)
 document.getElementById("findBtn").addEventListener("click",findOlder)
 
+window.PouchDB = PouchDB
+
 
 
